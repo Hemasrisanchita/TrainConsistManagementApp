@@ -4,20 +4,14 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC2: Passenger Bogie Operations ===");
+        System.out.println("=== UC3: Unique Bogie IDs ===");
 
-        List<String> passengerBogies = new ArrayList<>();
+        Set<String> bogieIds = new HashSet<>();
 
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        bogieIds.add("B1");
+        bogieIds.add("B2");
+        bogieIds.add("B1");
 
-        System.out.println("After Adding: " + passengerBogies);
-
-        passengerBogies.remove("AC Chair");
-
-        System.out.println("After Removal: " + passengerBogies);
-
-        System.out.println("Contains Sleeper? " + passengerBogies.contains("Sleeper"));
+        System.out.println("Unique Bogie IDs: " + bogieIds);
     }
 }
