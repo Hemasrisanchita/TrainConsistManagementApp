@@ -4,21 +4,16 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC4: LinkedList Operations ===");
+        System.out.println("=== UC5: Ordered Unique Formation ===");
 
-        LinkedList<String> consist = new LinkedList<>();
+        Set<String> formation = new LinkedHashSet<>();
 
-        consist.add("Engine");
-        consist.add("Sleeper");
-        consist.add("AC");
-        consist.add("Cargo");
-        consist.add("Guard");
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        formation.add("Sleeper");
 
-        consist.add(2, "Pantry Car");
-
-        consist.removeFirst();
-        consist.removeLast();
-
-        System.out.println("Final Train Consist: " + consist);
+        System.out.println("Final Formation: " + formation);
     }
 }
