@@ -4,14 +4,21 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC3: Unique Bogie IDs ===");
+        System.out.println("=== UC4: LinkedList Operations ===");
 
-        Set<String> bogieIds = new HashSet<>();
+        LinkedList<String> consist = new LinkedList<>();
 
-        bogieIds.add("B1");
-        bogieIds.add("B2");
-        bogieIds.add("B1");
+        consist.add("Engine");
+        consist.add("Sleeper");
+        consist.add("AC");
+        consist.add("Cargo");
+        consist.add("Guard");
 
-        System.out.println("Unique Bogie IDs: " + bogieIds);
+        consist.add(2, "Pantry Car");
+
+        consist.removeFirst();
+        consist.removeLast();
+
+        System.out.println("Final Train Consist: " + consist);
     }
 }
