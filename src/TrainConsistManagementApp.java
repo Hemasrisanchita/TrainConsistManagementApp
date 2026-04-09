@@ -1,16 +1,27 @@
-import java.util.regex.*;
+import java.util.*;
 
 public class TrainConsistManagementApp {
 
+    static class Goods {
+        String type;
+        String cargo;
+
+        Goods(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
+        }
+    }
+
     public static void main(String[] args) {
 
-        String trainId = "TRN-1234";
-        String cargo = "PET-AB";
+        List<Goods> list = Arrays.asList(
+                new Goods("Cylindrical", "Petroleum"),
+                new Goods("Box", "Food")
+        );
 
-        Pattern p1 = Pattern.compile("TRN-\\d{4}");
-        Pattern p2 = Pattern.compile("PET-[A-Z]{2}");
+        boolean safe = list.stream().allMatch(g ->
+                !g.type.equals("Cylindrical") || g.cargo.equals("Petroleum"));
 
-        System.out.println("Train ID valid: " + p1.matcher(trainId).matches());
-        System.out.println("Cargo valid: " + p2.matcher(cargo).matches());
+        System.out.println("Safe: " + safe);
     }
 }
