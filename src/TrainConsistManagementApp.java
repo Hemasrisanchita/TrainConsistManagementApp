@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class TrainConsistManagementApp {
 
@@ -18,18 +19,16 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC7: Sorting Bogies ===");
+        List<Bogie> bogies = Arrays.asList(
+                new Bogie("Sleeper", 72),
+                new Bogie("AC Chair", 78),
+                new Bogie("First Class", 24)
+        );
 
-        List<Bogie> bogies = new ArrayList<>();
+        List<Bogie> result = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .toList();
 
-        bogies.add(new Bogie("Sleeper", 72));
-        bogies.add(new Bogie("AC Chair", 78));
-        bogies.add(new Bogie("First Class", 24));
-
-        bogies.sort(Comparator.comparingInt(b -> b.capacity));
-
-        for (Bogie b : bogies) {
-            System.out.println(b);
-        }
+        System.out.println(result);
     }
 }
