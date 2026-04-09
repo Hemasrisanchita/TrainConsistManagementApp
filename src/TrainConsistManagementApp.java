@@ -11,24 +11,19 @@ public class TrainConsistManagementApp {
             this.name = name;
             this.capacity = capacity;
         }
-
-        public String toString() {
-            return name + " (" + capacity + ")";
-        }
     }
 
     public static void main(String[] args) {
 
-        List<Bogie> bogies = Arrays.asList(
+        List<Bogie> list = Arrays.asList(
                 new Bogie("Sleeper", 72),
-                new Bogie("AC Chair", 78),
-                new Bogie("First Class", 24)
+                new Bogie("AC", 78),
+                new Bogie("Sleeper", 60)
         );
 
-        List<Bogie> result = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .toList();
+        Map<String, List<Bogie>> grouped =
+                list.stream().collect(Collectors.groupingBy(b -> b.name));
 
-        System.out.println(result);
+        System.out.println(grouped);
     }
 }
