@@ -1,18 +1,28 @@
-import java.util.*;
-
 public class TrainConsistManagementApp {
+
+    static class InvalidCapacityException extends Exception {
+        InvalidCapacityException(String msg) {
+            super(msg);
+        }
+    }
+
+    static class Bogie {
+        int capacity;
+
+        Bogie(int capacity) throws InvalidCapacityException {
+            if (capacity <= 0) {
+                throw new InvalidCapacityException("Invalid capacity");
+            }
+            this.capacity = capacity;
+        }
+    }
 
     public static void main(String[] args) {
 
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) list.add(i);
-
-        long start = System.nanoTime();
-
-        list.stream().filter(x -> x % 2 == 0).toList();
-
-        long end = System.nanoTime();
-
-        System.out.println("Execution Time: " + (end - start));
+        try {
+            Bogie b = new Bogie(0);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
