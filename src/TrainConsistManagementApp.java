@@ -1,14 +1,11 @@
 import java.util.*;
-import java.util.stream.*;
 
 public class TrainConsistManagementApp {
 
     static class Bogie {
-        String name;
         int capacity;
 
-        Bogie(String name, int capacity) {
-            this.name = name;
+        Bogie(int capacity) {
             this.capacity = capacity;
         }
     }
@@ -16,14 +13,15 @@ public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
         List<Bogie> list = Arrays.asList(
-                new Bogie("Sleeper", 72),
-                new Bogie("AC", 78),
-                new Bogie("Sleeper", 60)
+                new Bogie(72),
+                new Bogie(78),
+                new Bogie(24)
         );
 
-        Map<String, List<Bogie>> grouped =
-                list.stream().collect(Collectors.groupingBy(b -> b.name));
+        int total = list.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
 
-        System.out.println(grouped);
+        System.out.println("Total: " + total);
     }
 }
