@@ -1,27 +1,16 @@
-import java.util.*;
+import java.util.regex.*;
 
 public class TrainConsistManagementApp {
 
-    static class Bogie {
-        int capacity;
-
-        Bogie(int capacity) {
-            this.capacity = capacity;
-        }
-    }
-
     public static void main(String[] args) {
 
-        List<Bogie> list = Arrays.asList(
-                new Bogie(72),
-                new Bogie(78),
-                new Bogie(24)
-        );
+        String trainId = "TRN-1234";
+        String cargo = "PET-AB";
 
-        int total = list.stream()
-                .map(b -> b.capacity)
-                .reduce(0, Integer::sum);
+        Pattern p1 = Pattern.compile("TRN-\\d{4}");
+        Pattern p2 = Pattern.compile("PET-[A-Z]{2}");
 
-        System.out.println("Total: " + total);
+        System.out.println("Train ID valid: " + p1.matcher(trainId).matches());
+        System.out.println("Cargo valid: " + p2.matcher(cargo).matches());
     }
 }
